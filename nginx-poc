@@ -1,0 +1,71 @@
+https://github.com/vrutkovs/DuckHunt-JS
+https://github.com/williamcaban/podcool
+
+-------------------------------------------------
+cd /etc/nginx
+cd /etc/ssl
+vi nginx-repo.cer
+mkdir nginx
+yum install ca-certificates
+yum install wget
+cd nginx/
+nginx-repo.cer
+vi nginx-repo.cer
+vi nginx-repo.key
+vi nginx-repo.jwt
+wget -P /etc/yum.repos.d https://cs.nginx.com/static/files/nginx-plus-8.repo
+yum install -y nginx-plus
+yum install ca-certificates
+yum install -y nginx-plus
+cd /etc/yum.repos.d/
+more nginx-plus-8.repo 
+cd /etc/ssl/nginx/
+mv nginx-repo.cer nginx-repo.crt
+systemctl status nginx
+systemctl start nginx
+systemctl enable nginx
+yum install nginx-ha-keepalive
+yum install nginx-sync
+yum install nginx-ha-keepalived
+
+------------------------------------------
+ cd /.ssh
+  102  cd /root/.ssh/
+  103  ll
+  104  rm id_rsa
+  105  rm id_rsa.pub 
+  106  rm known_hosts 
+  107  ssh-keygen -t rsa -b 2048
+  108  ll
+  109  more id_rsa.pub 
+  110  ip a
+  111  ssh root@svr-ngx-poc-p02.muf.co.id
+  112  ssh root@svr-ngx-poc-s03.muf.co.id
+  113  ssh root@svr-ngx-poc-s04.muf.co.id
+ 115  cd /etc/nginx
+  116  ll
+  117  cd conf.d/
+  118  ll
+  119  clear
+  120  vi test.conf
+
+------------------------------------------
+  130  more /etc/keepalived/keepalived.conf 
+  131  vi test.conf 
+  132  nginx-sync.sh 
+  133  systemctl status nginx
+  134  vi test.conf 
+  135  clear
+  136  nginx-sync.sh 
+  137  cd /etc/keepalived/
+  138  ll
+  139  ip a
+  140  vi keepalived.conf
+  141  more keepalived.conf 
+  142  scp ./keepalived.conf root@10.22.24.151:/etc/keepalived/
+  143  scp ./keepalived.conf root@10.22.24.1512/etc/keepalived/
+  144  scp ./keepalived.conf root@10.22.24.152:/etc/keepalived/
+  145  scp ./keepalived.conf root@10.22.24.153:/etc/keepalived/
+  146  systemctl status keepalived
+  147  systemctl start keepalived
+  148  ip a
